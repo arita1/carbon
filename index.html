@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Carbon Phone | Home</title>
+<link rel="icon" type="image/x-icon" href="outer/images/logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="outer/css/custom.css">
+</head>
+<body>
+<!-- main Wrapper -->
+<div id="wrapper">
+	<div class="main-form">
+		<div class="inner-form">
+			<div class="logo"><a href="#"><img src="outer/images/logo.png" alt="Carbon"></a></div>
+			<div class="carbon-text"><span>carbon</span> phone<p class="any-phone">your phone anywhere</p></div>
+			<div class="phones">
+				<ul>
+					<li><img src="outer/images/img_phone_hand.png" alt="img" width="200"></li>
+					<li><img src="outer/images/img_arrow.png" alt="img" width="74"></li>
+					<li><img src="outer/images/img_tablet.png" alt="img" width="58"></li>
+					<li><img src="outer/images/img_watch.png" alt="img" width="38"></li>
+					<li><img src="outer/images/img_phone_xl.png" alt="img" width="28"></li>
+					<li><img src="outer/images/img_phone_lg.png" alt="img" width="26"></li>
+					<li><img src="outer/images/img_system.png" alt="img" width="166"></li>
+					<li><img src="outer/images/img_laptop.png" alt="img" width="144"></li>
+					<li><img src="outer/images/img_tv.png" alt="img" width="195"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="login-footer"><a href="login.html"><img src="outer/images/img_login.png"	 alt="LOGIN"></a></div>
+			<p class="footer-email"><span>Launching May 2019 leave your Email for updates</span><input type="Email" name="Email" placeholder="Email" id="email"><input type="submit" value="Submit" id="submit"></p>
+			<div class="link-to-social">
+				<p>
+					<a href="#"><img src="outer/images/img_google_play.png" alt="img" width="100"></a><a href="#"><img src="outer/images/img_app_store.png" alt="img" width="100"></a>
+				</p>
+				<p>
+					<a href="#"><img src="outer/images/icon_chrome.png" alt="img" width="36"></a><a href="#"><img src="outer/images/icon_mozila.png" alt="img" width="36"></a><a href="#"><img src="outer/images/icon_safari.png" alt="img" width="36"></a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- main Wrapper -->
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#submit').click(function(){
+		var email = $('#email').val();	
+		Email.send({
+	    Host : "smtp.yourisp.com",
+	    Username : "chandan.jachpure@advantal.net",
+	    Password : "123456789@123",
+	    To : 'chandan.jachpure@advantal.net',
+	    From : email,
+	    Subject : "This is the subject",
+	    Body : "And this is the body"
+		}).then(
+		  message => alert(message)
+		);
+	});
+});
+</script>
+</html>

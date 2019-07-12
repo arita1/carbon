@@ -1,0 +1,958 @@
+/* Index page */
+@font-face {
+  font-family: kalinga;
+  src: url(fonts/kalinga.ttf);
+}
+@font-face {
+  font-family: kalingab;
+  src: url(fonts/kalingab.ttf);
+}
+body {
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0.5px;
+  font-family: kalinga;
+  background: #FFFFFF;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+#wrapper {
+  min-width: 320px;
+}
+.main-form {
+  background: url('outer/images/BG_Image.png') no-repeat scroll center center / cover;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.inner-form {
+  max-width: 350px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  width: 100%;
+}
+.form-title {
+  margin: 10px 0 20px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-align: center;
+}
+.form-activity {
+  background: #fff;
+  border-radius: 20px;
+  padding: 10px 25px 15px;
+}
+.form-activity p {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #242020;
+  margin: 0 0 15px;
+}
+.form-activity input {
+  border: none;
+  border-bottom: 1px solid #666;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 20px;
+}
+.form-activity button {
+  background: #2A9BC9;
+  color: #fff;
+  border: none;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  margin: 15px 0 0 0;
+}
+.fb-btn {
+  max-width: 350px;
+}
+.fb-btn .or-border {
+  position: relative;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 20px 0;
+  text-align: center;
+  color: #fff;
+}
+.fb-btn .or-border:after,
+.fb-btn .or-border:before {
+  position: absolute;
+  content: '';
+  left: 10px;
+  top: 9px;
+  background: #fff;
+  height: 1px;
+  width: 42%;
+}
+.fb-btn .or-border:after {
+  right: 10px;
+  left: auto;
+}
+/* ALWAYS PAGE
+================================================*/
+.alwaysheading {
+  color: #fff;
+}
+.accordion-bar {
+  background: #EFEFF4;
+  border-radius: 15px;
+  max-width: 991px;
+  width: 100%;
+  margin: 26px 0 0 0;
+}
+.accordion-head {
+  background: #F5F5F6;
+  padding: 20px 0 15px;
+  text-transform: capitalize;
+  color: #373737;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #dadadb;
+}
+.h5-basic {
+  background: #fff;
+  padding: 15px;
+  margin: 0 0 20px;
+  border-bottom: 2px solid #DEDEDF;
+}
+#home {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+.panel-group {
+  margin: 0;
+  border-top: 2px solid #DEDEDF;
+}
+.panel-group .panel {
+  border-radius: 0 !important;
+}
+.panel {
+  border-top: none;
+}
+.panel-heading {
+  background-color: transparent !important;
+}
+.panel-body {
+  padding: 0 0 0 20px;
+}
+.panel-body p {
+  margin: 0;
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #E3E3E3;
+}
+.i-row-odd {
+  background-color: #ffffff;
+}
+.i-row-even {
+  background-color: #f7f7f7;
+}
+.section-title {
+  margin-top: 0;
+  margin-bottom: 0.6em;
+  font-weight: 500;
+}
+.section-title .fa {
+  margin-right: 5px;
+  color: #6f5499;
+}
+.i-accordion .panel-heading,
+.d-accordion .panel-heading,
+.accordion-2a .panel-heading,
+.accordion-2b .panel-heading,
+.accordion-3 .panel-heading {
+  cursor: pointer;
+}
+.d-accordion .panel-heading.collapsed .fa-chevron-right:before {
+  content: '\f078';
+}
+.btn-toggle {
+  margin: 0 4rem;
+  padding: 0;
+  position: relative;
+  border: none;
+  height: 1.5rem;
+  width: 3rem;
+  border-radius: 1.5rem;
+  color: #6b7381;
+  background: #bdc1c8;
+}
+.btn-toggle:focus,
+.btn-toggle.focus,
+.btn-toggle:focus.active,
+.btn-toggle.focus.active {
+  outline: none;
+}
+.btn-toggle:before,
+.btn-toggle:after {
+  line-height: 1.5rem;
+  width: 4rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.25s;
+}
+.btn-toggle>.handle {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 1.125rem;
+  background: #fff;
+  transition: left 0.25s;
+}
+.btn-toggle.active {
+  transition: background-color 0.25s;
+}
+.btn-toggle.active>.handle {
+  left: 1.6875rem;
+  transition: left 0.25s;
+}
+.btn-toggle.active:before {
+  opacity: 0.5;
+}
+.btn-toggle.active:after {
+  opacity: 1;
+}
+.btn-toggle.btn-sm:before,
+.btn-toggle.btn-sm:after {
+  line-height: -0.5rem;
+  color: #fff;
+  letter-spacing: 0.75px;
+  left: 0.4125rem;
+  width: 2.325rem;
+}
+.btn-toggle:before,
+.btn-toggle:after {
+  color: #6b7381;
+}
+.btn-toggle.active {
+  background-color: #4CDA64;
+}
+.btn-toggle.btn-lg {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border: none;
+  height: 2.5rem;
+  width: 5rem;
+  border-radius: 2.5rem;
+}
+.btn-toggle.btn-lg:focus,
+.btn-toggle.btn-lg.focus,
+.btn-toggle.btn-lg:focus.active,
+.btn-toggle.btn-lg.focus.active {
+  outline: none;
+}
+.btn-toggle.btn-lg:before,
+.btn-toggle.btn-lg:after {
+  line-height: 2.5rem;
+  width: 5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.25s;
+}
+.btn-toggle.btn-lg>.handle {
+  position: absolute;
+  top: 0.3125rem;
+  left: 0.3125rem;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 1.875rem;
+  background: #fff;
+  transition: left 0.25s;
+}
+.btn-toggle.btn-lg.active {
+  transition: background-color 0.25s;
+}
+.btn-toggle.btn-lg.active>.handle {
+  left: 2.8125rem;
+  transition: left 0.25s;
+}
+.btn-toggle.btn-lg.active:before {
+  opacity: 0.5;
+}
+/* MAIN DASHBOARD
+================================================*/
+.top-navigation-bar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: #2997C3;
+  line-height: 30px;
+  padding: 8px 20px 10px;
+  box-sizing: border-box;
+}
+.top-navigation-bar ul li {
+  float: left;
+  background: #4cd964;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0 15px 0 0;
+  color: #fff;
+  font-size: 18px;
+}
+.top-navigation-bar ul li:first-child {
+  background: red;
+}
+.top-navigation-bar ul li .fa {
+  line-height: 32px;
+}
+.top-navigation-bar ul li:first-child .fa {
+  transform: rotate(134deg);
+  line-height: 29px;
+  margin: 0 0 0 -3px;
+}
+.menu-dashboard {
+  padding: 48px 0 0 0;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+/* MAIN DASHBOARD ONE
+================================================*/
+.side-dashpoard-one {
+  width: 50%;
+  height: 100vh;
+  background: url(outer/images/BG_Image.png) no-repeat scroll center center / cover;
+}
+.side-dashpoard-one ul li a {
+  display: block;
+  padding: 10px 10px 10px 70px;
+  text-decoration: none;
+  transition: all 0.4s;
+  font-size: 16px;
+  overflow: hidden;
+  color: #fff;
+  text-transform: capitalize;
+}
+.side-dashpoard-one ul li a .fa {
+  float: left;
+  font-size: 20px;
+  margin: 0 10px 0 0;
+}
+/*.link-list01 {
+  background: url(outer/images/favourite_unselect.png) no-repeat scroll left 25px center / 20px;
+}
+.link-list01:hover, .link-list01:focus {
+  background: #F1F1F1 url(outer/images/favourite_selected.png) no-repeat scroll left 25px center / 20px;
+  color: #2A9BC9;
+  border-right: 1px solid #14417b;
+}*/
+/*.link-list02 {
+  background: url(outer/images/recent_unselect.png) no-repeat scroll left 25px center / 20px;
+}
+.link-list02:hover, .link-list02:focus {
+  background: #F1F1F1 url(outer/images/recent_selected.png) no-repeat scroll left 25px center / 20px;
+  color: #2A9BC9;
+  border-right: 1px solid #14417b;
+}*/
+.link-list03 {
+ background: url(outer/images/contact_unselect.png) no-repeat scroll left 25px center / 20px;
+}
+.link-list03:hover {
+ background: #fff url(outer/images/contact_selected.png) no-repeat scroll left 25px center / 20px;
+ color: #2A9BC9;
+ border-right: 1px solid #14417b;
+}
+.user-active {
+ background: #fff url(outer/images/contact_selected.png) no-repeat scroll left 25px center / 20px;
+ color: #2A9BC9 !important;
+ border-right: 1px solid #14417b;
+}
+.link-list04 {
+ background: url(outer/images/keypad_unselect.png) no-repeat scroll left 25px center / 20px;
+}
+.link-list04:hover {
+ background: #fff url(outer/images/keypad_selected.png) no-repeat scroll left 25px center / 20px;
+ color: #2A9BC9;
+ border-right: 1px solid #14417b;
+}
+.keyboard-active {
+ background: #fff url(outer/images/keypad_selected.png) no-repeat scroll left 25px center / 20px;
+ color: #2A9BC9 !important;
+ border-right: 1px solid #14417b;
+}
+/*.link-list05 {
+  background: url(outer/images/more_unselect.png) no-repeat scroll left 25px center / 20px;
+}
+.link-list05:hover, .link-list05:focus {
+  background: #F1F1F1 url(outer/images/more_selected.png) no-repeat scroll left 25px center / 20px;
+  color: #2A9BC9;
+  border-right: 1px solid #14417b;
+}*/
+/* MAIN DASHBOARD TWO
+================================================*/
+.side-dashpoard-two {
+  width: 50%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.h4-basic {
+  font-weight: bold;
+  text-transform: capitalize;
+  color: #242020;
+  font-family: kalingab;
+  margin-top: 0;
+  font-size: 22px;
+  padding: 0 15px;
+}
+.add-fevourites {
+  padding: 10px 15px 0;
+  color: #2B9BC7;
+  font-size: 20px;
+}
+.search-contact {
+  position: relative;
+  padding: 0 15px;
+  border-bottom: 2px solid #C2C2C2;
+}
+.search-contact .fa {
+  position: absolute;
+  left: 25px;
+  top: 8px;
+  font-size: 16px;
+  color: #666;
+}
+.search-contact input {
+  background: #E5E1E0;
+  border-radius: 5px;
+  height: 35px;
+  line-height: 35px;
+  border: none;
+  padding: 0 10px 0 35px;
+  width: 100%;
+  margin: 0 0 10px;
+}
+.user-account {
+  padding: 15px;
+}
+.user-account .usre-caps {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  line-height: 55px;
+  text-align: center;
+  font-size: 22px;
+  background: #CFCFCF;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.user-account .user-name-card {
+  color: #242020;
+  overflow: hidden;
+  padding: 7px 0 0 10px;
+  font-weight: bold;
+}
+.user-account .user-name-card span {
+  display: block;
+  color: #B7B7B7;
+  font-weight: normal;
+}
+/* .contact-name-search {
+  padding: 0 0 20px;
+}
+.contact-name-search li {
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid #ECECEC;
+  background: #fff;
+  color: #242020;
+  text-transform: capitalize;
+  padding: 0 15px;
+} */
+
+.contant-name-search {
+  padding: 0 0 20px;
+}
+.contant-name-search li {
+  height: 35px;
+  line-height: 35px;
+  border-bottom: 1px solid #ECECEC;
+  background: #fff;
+  color: #242020;
+  text-transform: capitalize;
+  padding: 0 12px;
+}
+.search-cap {
+  height: 30px !important;
+  font-weight: bold;
+  line-height: 32px !important;
+  background: #E5E1E0 !important;
+  text-transform: uppercase !important;
+}
+#favourites, #dial-pad, #recents {
+  display: none;
+}
+.phone-dial-pad {
+  overflow: hidden;
+}
+.phone-dial-pad .number {
+  box-sizing: border-box;
+  padding: 20px 50px 15px;
+  font-size: 26px;
+  letter-spacing: 2px;
+  font-weight: bold;
+  background: #f9f9f9;
+  min-height: 72px;
+}
+.phone-dial-pad ul {
+  padding: 20px 140px 0;
+}
+@media screen and (max-width: 1024px){
+  .phone-dial-pad ul {
+    padding: 20px 100px 0;
+  }
+}
+@media screen and (max-width: 991px){
+  .phone-dial-pad ul {
+    padding: 20px 60px 0;
+  }
+  .cross-btn {
+    width: 92px;
+  }
+}
+.phone-dial-pad li.digits {
+  display: inline-block;
+  text-align: center;
+  margin: 15px 0;
+  cursor: pointer;
+  list-style: none;
+  float: left;
+}
+.compact .dials .digits.pad-action p {
+  background-color: #37b830;
+  color: #fff;
+}
+.compact .dials .digits.pad-action p i {
+  font-size: 30px;
+  line-height: 10px;
+}
+.compact .dials .digits p i.fa.fa-close {
+  font-size: 18px;
+  line-height: 20px;
+  opacity: 0.7;
+}
+.compact .dials .digits p i.fa.fa-refresh {
+  font-size: 25px;
+  line-height: 10px;
+}
+.compact .dials .digits.cross-btn p {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  line-height: 30px;
+  margin: 15px auto !important;
+  position: relative;
+  box-shadow: none;
+}
+.compact .dials .digits.cross-btn p::before {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 12px 12px 12px 0;
+  border-color: transparent #E5E5E5 transparent transparent;
+  left: -12px;
+  top: 0;
+}
+
+/* Footer */
+
+.footer-bottom {
+  background-color: #1A538A;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 25px 0 25px;
+  color: rgba(255, 255, 255, 0.7);
+}
+.footer-bottom a {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.loading {
+	width: 100%;
+    position: fixed;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+	text-align: center;
+}
+
+.btn-logout {
+	width: 100%;
+	padding: 2px 10px 5px !important;
+	text-align: left !important;
+  }
+/*start default dialer-pad-css-----------*/
+
+.dialPad.compact {
+ /* position: relative;*/
+}
+.dialpad .number {
+  position: relative;
+  z-index: 2;
+  padding: 15px 20px;
+  color: #4d4d4d;
+  font-weight: 300;
+  font-size: 40px;
+  background: #fff;
+  height: 78px;
+}
+.dialpad .dials {
+  margin: -1px 0 0 -1px;
+  background: #1d1918;
+  cursor: pointer;
+}
+.dialpad .dials:before,
+.dialpad .dials:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.dialpad .dials:after {
+  clear: both;
+}
+.dialpad .dials .digits {
+  float: left;
+  width: 33.33%;
+}
+.dialpad .dials .digits p {
+  font-weight: 600;
+  padding: 15px 25px;
+  border-top: 1px solid #4d4d4d;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  border-left: 1px solid #4d4d4d;
+}
+.dialpad .dials .digits p strong {
+  font-size: 50px;
+  margin-right: 8px;
+  color: #fff;
+}
+.dialpad .dials .digits:active {
+  background: #00caf2;
+  border-top-color: #b2f2ff;
+}
+.compact .dials .digits p {
+  padding: 25px 15px;
+  width: 55px;
+  height: 55px;
+  background: #E5E5E5;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 4px 9px 12px -11px #000;
+  font-weight: bold;
+}
+.compact .dials .digits p strong {
+  font-size: 16px;
+  line-height: 0px;
+  display: block;
+  padding-bottom: 10px;
+  text-align: center;
+}
+.compact .dials .digits p sup {
+  text-transform: uppercase;
+  color: #000;
+  z-index: 999;
+  font-size: 9px;
+}
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+}
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%
+}
+.hidden {
+  display: none !important;
+  visibility: hidden;
+}
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+.invisible {
+  visibility: hidden;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+
+/*end default dialer-pad-css-----------*/
+
+
+/*start ayushi dialer-pad-css---*/
+
+
+
+/*end ayushi dialer-pad-css---*/
+
+
+/*-- process1 screen css ==========*/
+
+.form-activity h5 {
+  text-align: center;
+  line-height: 1.5;
+  padding: 50px 0;
+}
+.screens {
+  background: url('outer/images/BG_Image.png') no-repeat scroll 0 0 / 100% 100%;
+  min-height: 230px;
+}
+.form-activity1 {
+  border-radius: 0px;
+  padding: 55px 25px 75px;
+}
+.main-form1 {
+  /*background: none;*/
+  padding: 20px 0;
+}
+.login-form-1 {
+  position: relative;
+  background: #fff;
+  /*height: 100vh;*/
+  /*box-shadow: 0px 1px 3px 2px #cccccc75;*/
+}
+.same-btn {
+  position: relative;
+}
+.form-activity1 button {
+  position: absolute;
+  width: 100%;
+}
+.verify-head {
+  position: relative;
+  text-transform: uppercase;
+  padding: 15px 10px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 12px;
+  color: #fff;
+}
+.verify-head .fa-chevron-left {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  color: #fff;
+}
+.user-name {
+  text-align: center;
+  margin: 20px 0 0 0;
+  color: #fff;
+}
+.user-name p {
+  margin-top: 40px;
+  margin-bottom: 7px;
+}
+.user-bg {
+  background: #fff;
+  border-radius: 50%;
+  height: 80px;
+  display: inline-block;
+  width: 80px;
+  line-height: 80px;
+  font-size: 50px;
+  color: #242020;
+}
+.form-activity1 #form {
+  /*max-width: 240px;*/
+  margin: 25px auto;
+}
+.form-activity1 #form input {
+  margin: 0 5px;
+  text-align: center;
+  height: 55px;
+  line-height: 0px;
+  font-size: 30px;
+  border: solid 1px #ccc;
+  box-shadow: 0 0 5px #ccc inset;
+  outline: none;
+  width: 20%;
+  transition: all 0.2s ease-in-out;
+  border-radius: 3px;
+  color: #000;
+}
+#form h4 {
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+}
+.verify-head .fa-home {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  color: #fff;
+}
+
+/*-- process2 screen css ==========*/
+
+.screens #form2 {
+  margin: 25px auto 0;
+  text-align: center;
+}
+.screens #form2 input {
+  margin: 35px 5px;
+  text-align: center;
+  height: 40px;
+  line-height: 0px;
+  font-size: 25px;
+  border: solid 1px #ccc;
+  box-shadow: 0 0 5px #ccc inset;
+  outline: none;
+  width: 10%;
+  transition: all 0.2s ease-in-out;
+  border-radius: 3px;
+  color: #000;
+}
+.mobile-diler-pad {
+  background: #fff;
+  /*padding: 55px 25px;*/
+}
+#form2 p {
+  color: #fff;
+}
+#form2 button {
+  background: #2A9BC9;
+  color: #fff;
+  border: none;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  margin: 15px 0;
+}
+.continue-btn {
+  position: relative;
+  padding: 0 20px;
+}
+.mobile-diler-pad li.num-digit {
+  float: left;
+  width: 33.3%;
+  height: 55px;
+  text-align: center;
+  list-style: none;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  line-height: 55px;
+  position: relative;
+  font-size: 19px;
+  font-weight: bold;
+}
+.remove-border {
+  border: none;
+}
+.new-bg {
+  background-color: #C0C2C7;
+}
+.num-digit p {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  right: 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: normal;
+}
+
+.forgot-pass {
+  text-align: center;
+}
+.forgot-pass a {
+  color: #fff;
+}
+
+
+#emailtooltip {
+  color:red;
+}
+
+.resend {
+  text-align: center;
+  margin-top: 13px;
+}
+.resend a {
+  color: #fff;
+}
+.otp-activity input{
+  padding: 5px;
+}

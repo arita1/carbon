@@ -1,0 +1,1676 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>Carbon Phone | Home</title>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="inner/images/logo.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+<link rel="stylesheet" href="inner/css/custom.css">
+<link rel="stylesheet" href="inner/css/side-menu.css">
+</head>
+<body>
+<!-- main Wrapper -->
+<div id="wrapper">
+	<div class="main-dashboard">
+		<div class="dashboard">
+			<div class="side-menu-log flex-25 flex-22">
+				<!-- Aside -->
+				<aside class="side-nav" id="show-side-navigation1">
+					<h3 class="side-heading"><img src="inner/images/logo.png" alt="image"> CARBON</h3>
+				   <ul class="sidebar-menu sb-menu">
+				    <li><a href="javascript:void(0)" id="dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></li>
+						<li><a href="javascript:void(0)" id="recent"  onClick="recentcalls();"><i class="fa fa-refresh"></i>Recents</a></li>
+						<li><a href="javascript:void(0)" id="favourites"><i class="fa fa-heart"></i>Favourites</a></li>
+						<li><a href="javascript:void(0)" id="voicemail" onClick="voicelist();" ><i class="fa fa-envelope"></i>Voicemail</a></li>
+						<li><a class="sb-toggle-submenu" href="javascript:void(0)"><i class="fa fa-cog"></i>Settings<span class="sb-caret"></span></a>
+							<ul class="sb-submenu" style="display: none;">
+								<li><a href="javascript:void(0)" id="emergency-contact" onclick="getEmergencyDetails();"><i class="fa fa-life-bouy"></i>Add Emergency Contact</a></li>
+								<!-- <li><a href="javascript:void(0)" id="add-credits"><i class="fa fa-credit-card-alt"></i>Add Credits</a></li> -->
+								<li><a href="javascript:void(0)" id="change-password"><i class="fa fa-key"></i>Change Password</a></li>
+								<li><a href="javascript:void(0)" id="signout"><i class="fa fa-sign-out"></i>Logout</a></li>
+							</ul>
+						</li>
+				  </ul>
+				</aside>
+			</div>
+			<!-- Search Log -->
+			<div class="search-log flex-25">
+				<div class="search-contact-log">
+					<div class="search-input">
+						<h4>Contacts</h4>
+						<input type="search" name="search" placeholder="Search..." onkeyup="myFunction()"  id="myInput" title="Type in a name">
+					</div>
+					<div class="contact-list" id="contactList">
+					</div>
+				</div>
+				<div class="recent-calls hide">
+					<div class="recent-absolute">
+						<ul class="all-missed">
+							<li><a href="javascript:void(0)" class="all-call-active active-call">All</a></li>
+							<li><a href="javascript:void(0)" class="missed-call-active">Missed</a></li>
+						</ul>
+						<h4 class="">Recents</h4>
+					</div>
+				  <div class="call-log-favourites">
+						<!--- recent call list --->
+						<div class="all-calls" id="recentList">
+						</div>
+						<!--- missed call list --->
+						<div class="missed-calls hide" id="missedList">
+						</div>
+					</div>
+				</div>
+				<div class="favourites-calls hide">
+					<h4 class="">Favourites<a href="javascript:void(0)">
+					
+					</a></h4>
+					<div class="call-log-favourites" id="call-log-favourites">
+					</div>
+				</div>
+				<div class="Voice-mails hide">
+					<h4 class="">Voice Mail</h4>
+					<div class="call-log-favourites" id="voiceDiv">
+					</div>
+				</div>
+				<div class="emergency-contact hide">
+					<h4 class="">Emergency Contact</h4>
+					<div class="call-log-favourites">
+						<form action="javascript:void(0)" method="post" class="contact-fields" id="emergency-contact-field">
+							<div class="form-group" id="emergency_response" >
+							</div>
+						  <div class="form-group">
+						    <label>Emergency Email 1:</label>
+						    <input type="email" class="form-control" id="emailId1" placeholder="Email">
+						  </div>
+						  <div class="form-group">
+						    <label>Emergency Email 2:</label>
+						    <input type="email" class="form-control " id="emailId2" placeholder="Email">
+						  </div>
+						  <div class="form-group">
+						    <label>Emergency Contact 1:</label>
+						    <input type="text" class="form-control " onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57 &amp;&amp; event.charCode != 8 "  id="mobleNo1" placeholder="Number">
+						  </div>
+						  <div class="form-group">
+						    <label>Emergency Contact 2:</label>
+						    <input type="text" class="form-control " onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57 &amp;&amp; event.charCode != 8 " id="mobleNo2" placeholder="Number">
+						  </div>
+						   <div class="form-group">
+						   <input type="hidden" class="form-control " id="emergencyContactId" placeholder="Number">
+						  </div>
+						  <div class="change-pass-fields">
+						  	<button type="submit" onclick="updateEmergencyDetails();" class="btn btn-primary btn-block">SAVE</button>
+						  </div>
+						</form>
+					</div>
+				</div>
+				<div class="change-password hide">
+					<h4 class="">Change Password</h4>
+					<form  action="javascript:void(0)" method="post" class="contact-fields" id="change-password-field">
+						<div class="form-group" id="password_response">
+						</div>
+					  <div class="form-group">
+					    <label>Old Password</label>
+					    <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Old Password">
+					  </div>
+					  <div class="form-group">
+					    <label>New Password</label>
+					    <input id="new-pass" type="password" class="form-control" name="new_password" placeholder="New Password">
+					  </div>
+					  <div class="form-group">
+					    <label>Confirm Password</label>
+					    <input id="confirm-new-pass" type="password" id="cnfm_password" name="cnfm_password" class="form-control " placeholder="Confirm Password">
+					  </div>
+						<div class="change-pass-fields">
+							<button type="submit" id="pass-submit" onclick="changePassword();" class="btn btn-primary btn-block">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- Call Log -->
+			<div class="call-log flex-25">
+				<!-- Dialpad -->
+				<div class="dialpad compact dial_number">
+					<h4>Dialer <p><label id="txtRegStatus">Connecting...</label><span id="con_status" class="con_status_prev"></span></p></h4>
+			    <div class="number" contenteditable="true" maxlenght="20" placeholder="Typoe to Click Here"></div>
+			    <div class="dials">
+			     <ul class="clearfix">
+			        <li class="digits pad-action-center"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>1</strong></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>2</strong><span>abc</span></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>3</strong><span>def</span></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>4</strong><span>ghi</span></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>5</strong><span>jkl</span></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>6</strong><span>mno</span></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>7</strong><span>pqrs</span></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>8</strong><span>tuv</span></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>9</strong><span>wxyz</span></p></li>
+			        <li class="digits pad-action-center"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>*</strong></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>0</strong><span>+</span></p></li>
+			        <li class="digits pad-action-center"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong>#</strong></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong><i class="fa fa-refresh"></i></strong><span>Clear</span></p></li>
+			        <li class="digits pad-action "><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong><button class="fa fa-phone" id="btnCall" disabled></button></strong></p></li>
+			        <li class="digits"><p class="click-effect" onClick="beepSound();"><i class="click-circle"></i><strong><img src="inner/images/icon_backspace.png" alt="" width="24"></strong><span>Delete</span></p></li>
+			      </ul>
+			    </div>
+			  </div>
+			  <!-- Outing -->
+			  <div class="outing-screen hide">
+			  	<div class="Dialed-number">
+			  		<span id="txtPhoneCalling"></span>
+			  		<p><span id="txtCallStatus">Calling mobile</span></p>
+			  	</div>
+			  	<div class="end-call">
+				  	<div class="call-options" id="divCallOptions"  style='opacity: 0; margin-top: 0px; margin-bottom: 50px;'>
+							<ul style="display: flex; justify-content: center; align-items: center;">
+								<li class="icon-active">
+									<input type="button" class="" id="btnMute" value="" onclick='sipToggleMute();' style="color:transparent;" />
+									<p>Mute</p>
+								</li>
+								<li class="icon-active hidden-value">
+									<input type="button" class=""  style="color:transparent;" id="btnHoldResume" value="" onclick='sipToggleHoldResume();' />
+									<p>Hold</p>
+								</li>
+								<li class="icon-active">
+								    <input type="button" class="" id="btnKeyPad" value=""  />
+									<p>Keypad</p>
+								</li>
+							</ul>
+				  	</div>
+			  		<p><strong><button class="fa fa-phone" id="btnHangUp" onclick='sipHangUp();' disabled></button></strong></p>
+			  		<!-- Dialer -->
+			  		<div class="open-dialer">
+			  			<p class="close-dialer"><span>X</span></p>
+			  			<div class="number01" contenteditable="true" maxlenght="20" placeholder="Type to Click Here"></div>
+					    <div class="dials01">
+					      <ul class="clearfix">
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('1');"><i class="click-circle"></i><strong>1</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('2');"><i class="click-circle"></i><strong>2</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('3');"><i class="click-circle"></i><strong>3</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('4');"><i class="click-circle"></i><strong>4</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('5');"><i class="click-circle"></i><strong>5</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('6');"><i class="click-circle"></i><strong>6</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('7');"><i class="click-circle"></i><strong>7</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('8');"><i class="click-circle"></i><strong>8</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('9');"><i class="click-circle"></i><strong>9</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('*');"><i class="click-circle"></i><strong>*</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('0');"><i class="click-circle"></i><strong>0</strong></p></li>
+					        <li class="digits"><p class="click-effect" onclick="sipSendDTMF('#');"><i class="click-circle"></i><strong>#</strong></p></li>
+					      </ul>
+					    </div>
+						</div>
+			  	</div>
+			  </div>
+			  <!--- Incoming -->
+			  <div class="incoming-screen hide">
+			  	<div class="incoming-number" id="incomingNumber">
+			  		<p><img src="inner/images/logo.png"></p>
+			  	</div>
+			  	<div class="call-accept-decline">
+				  	<ul class="accept-decline">
+				  		<li><a class="end-call-btn"  href="javascript:void(0)"><i class="fa fa-phone" id="rejectCall"></i></a></li>
+				  		<li><a href="javascript:void(0)"><i class="fa fa-phone" id="acceptCall"></i></a></li>
+				  	</ul>
+			  	</div>
+			  </div>
+			  <!---Voice Mail Audio Starts --->
+			  <div id="audio_body" class="audio-line hide">
+			  	<h4 id="audio_number"></h4>
+			  	<audio   loop autoplay controls id="audioPlay" preload="auto">
+					  <source id="audio_scr" src="" type="audio/wav">
+					</audio>
+			  </div>
+			</div>
+			<!-- Message Log -->
+			<div class="message-log flex-25">
+				<div class="msg-list">
+					<h4>Messages</h4>
+					<div id="msgDiv">
+					</div>
+				</div>
+			  <!-- voice call messages starts --->
+			  <div id="msg_body" class="audio-line-text hide">
+			  	<h4 id="text_number"></h4>
+			  	<div id="text_body" class="text-voice"></div>
+			  </div>
+			  <!--- voice call message end --->
+			</div>
+		</div>
+	</div>
+</div>
+<!-- stored hidden values ---->
+<input type="hidden" id="txtDisplayName"/>
+<input type="hidden" id="txtPrivateIdentity" />
+<input type="hidden" id="txtPublicIdentity" />
+<input type="hidden" id="txtPassword" />
+<input type="hidden" id="txtRealm"/>
+<input type="hidden" id="txtPhoneNumber"/>
+<button class="hide" id="btnTransfer" />
+</body>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="inner/js/constant.js"></script>
+
+<script type="text/javascript" src="inner/js/custom.js"> </script>
+<script type="text/javascript" src="release/SIPml-api.js?svn=252" > </script>
+<script type="text/javascript" src="inner/js/main.js"></script>
+<script type="text/javascript" src="inner/js/slidebars.min.js"></script>
+
+<script type="text/javascript" type="text/javascript">
+/*
+// Check user login is in session or not
+*/
+if(window.localStorage.getItem('sipUserName') == null){
+        window.location.href = LOGIN;
+	}
+/*
+// Load left side bar menu js
+*/	
+(function($){	$.slidebars();}(jQuery));
+</script>
+<!-- after loading sidebar load side-bar theme js to stop confliction -->
+<script src="js/slidebars-theme.js"></script> 
+<script>
+(function ($)
+{
+
+	/***************
+	              LOAD STYLING JAVASCRIPT
+	*******************/
+
+	// All - Missed Calls
+	$(".all-call-active").click(function ()
+	{
+		$(this).addClass("active-call");
+		$(".missed-call-active").removeClass("active-call");
+		$(".all-calls").removeClass("hide");
+		$(".missed-calls").addClass("hide");
+	});
+
+	$(".missed-call-active").click(function ()
+	{
+		$(this).addClass("active-call");
+		$(".all-call-active").removeClass("active-call");
+		$(".missed-calls").removeClass("hide");
+		$(".all-calls").addClass("hide");
+	});
+
+	// SIDE MENU NAVIGATION MANAGE
+	$("#dashboard").click(function ()
+	{
+		$(".recent-calls, .favourites-calls, .Voice-mails, .emergency-contact, .audio-line, .audio-line-text, .outing-screen, .change-password").addClass("hide");
+		$(".search-contact-log, .dialpad, .msg-list, .search-log, .call-log, .message-log").removeClass("hide");
+		$(".search-log").removeClass("flex-78");
+	});
+
+	$("#recent").click(function ()
+	{
+		$(".search-contact-log, .favourites-calls, .Voice-mails, .emergency-contact, .audio-line, .audio-line-text, .outing-screen, .change-password").addClass("hide");
+		$(".recent-calls, .dialpad, .msg-list, .search-log, .call-log, .message-log").removeClass("hide");
+		$(".search-log").removeClass("flex-78");
+	});
+
+	$("#favourites").click(function ()
+	{
+		$(".recent-calls, .search-contact-log, .Voice-mails, .emergency-contact, .audio-line, .audio-line-text, .outing-screen, .change-password").addClass("hide");
+		$(".favourites-calls, .dialpad, .msg-list, .search-log, .call-log, .message-log").removeClass("hide");
+		$(".search-log").removeClass("flex-78");
+	});
+
+	$("#voicemail").click(function ()
+	{
+		$(".recent-calls, .search-contact-log, .favourites-calls, .emergency-contact, .dialpad, .msg-list, .outing-screen, .change-password").addClass("hide");
+		$(".Voice-mails, .search-log, .call-log, .message-log").removeClass("hide");
+		$(".search-log").removeClass("flex-78");
+	});
+
+	$("#emergency-contact").click(function ()
+	{
+		$(".recent-calls, .search-contact-log, .favourites-calls, .Voice-mails, .audio-line, .audio-line-text, .outing-screen, .change-password, .call-log, .message-log").addClass("hide");
+		$(".emergency-contact, .dialpad, .msg-list, .search-log").removeClass("hide");
+		$(".search-log").addClass("flex-78");
+	});
+
+	$("#change-password").click(function ()
+	{
+		$(".search-contact-log, .recent-calls, .favourites-calls, .Voice-mails, .emergency-contact, .audio-line, .audio-line-text, .outing-screen, .change-password, .call-log, .message-log").addClass("hide");
+		$(".dialpad, .msg-list, .search-log").removeClass("hide");
+		$(".change-password").removeClass("hide");
+		$(".search-log").addClass("flex-78");
+	});
+
+	// VOICE MAIL LOAD function
+
+	$(".voice-audio").click(function ()
+	{
+		$(".audio-line").removeClass("hide");
+	});
+
+	$(".voice-text").click(function ()
+	{
+		$(".audio-line-text").removeClass("hide");
+	});
+
+	$(".end-call button").click(function ()
+	{
+		$(".outing-screen").addClass("hide");
+		$(".dialpad").removeClass("hide");
+	});
+
+	// Change Password submit 
+
+	$("#pass-submit").click(function ()
+	{
+		var newpass = $("#new-pass").val();
+		var confirmpass = $("#confirm-new-pass").val();
+		if (newpass != confirmpass)
+		{
+			alert('Wrong');
+		}
+		else
+		{
+			$("#change-password-field").submit();
+		}
+	});
+     // add class on dialpad after click for animation effect
+	$(".dialpad .dials .digits .click-effect").click(function ()
+	{
+		$(this).children(".click-circle").addClass("click-circle-big");
+	});
+    // remove class on dialpad after click for animation effect
+	setInterval(function ()
+	{
+		jQuery(".click-effect").children(".click-circle").removeClass("click-circle-big");
+	}, 100);
+
+
+	/***********
+	   ON LOAD CALL SIP REGISTRATION AND LOGIN AND SAVE SETTINGS
+	********/
+	setTimeout(function ()
+	{
+		sipRegister();
+	}, 1000);
+	/**********
+	   GET USER CONTACT 
+	***************/
+	getContactList();
+	/*********
+	   GET USER MESSAGE
+	**************/
+	messageList();
+
+	/************
+	     CHECK LOGGEDIN USER
+
+	**************/
+	console.log(window.localStorage.getItem("sipUserName"));
+
+}(jQuery));
+
+/*
+|
+|     SIP FUNCTIONS STARTS
+|
+|
+*/
+
+ 
+var sTransferNumber;
+var oRingTone, oRingbackTone;
+var oSipStack, oSipSessionRegister, oSipSessionCall, oSipSessionTransferCall;
+var videoRemote, videoLocal, audioRemote;
+var bFullScreen = false;
+var oNotifICall;
+var bDisableVideo = false;
+var viewVideoLocal, viewVideoRemote, viewLocalScreencast; // <video> (webrtc) or <div> (webrtc4all)
+var oConfigCall;
+var oReadyStateTimer;
+
+C = {
+	divKeyPadWidth: 220
+};
+
+window.onload = function ()
+{
+	window.console && window.console.info && window.console.info("location=" + window.location);
+	
+	audioRemote = document.getElementById("audio_remote");
+
+	document.onkeyup = onKeyUp;
+	document.body.onkeyup = onKeyUp;
+
+	// set debug level
+	SIPml.setDebugLevel((window.localStorage && window.localStorage.getItem('org.doubango.expert.disable_debug') == "true") ? "error" : "info");
+
+	loadCredentials();
+	loadCallOptions();
+
+	// Initialize call button
+	uiBtnCallSetText("Call");
+
+	var getPVal = function (PName)
+	{
+		var query = window.location.search.substring(1);
+		var vars = query.split('&');
+		for (var i = 0; i < vars.length; i++)
+		{
+			var pair = vars[i].split('=');
+			if (decodeURIComponent(pair[0]) === PName)
+			{
+				return decodeURIComponent(pair[1]);
+			}
+		}
+		return null;
+	}
+
+	var preInit = function ()
+	{
+		// set default webrtc type (before initialization)
+		var s_webrtc_type = getPVal("wt");
+		var s_fps = getPVal("fps");
+		var s_mvs = getPVal("mvs"); // maxVideoSize
+		var s_mbwu = getPVal("mbwu"); // maxBandwidthUp (kbps)
+		var s_mbwd = getPVal("mbwd"); // maxBandwidthUp (kbps)
+		var s_za = getPVal("za"); // ZeroArtifacts
+		var s_ndb = getPVal("ndb"); // NativeDebug
+
+		if (s_webrtc_type) SIPml.setWebRtcType(s_webrtc_type);
+
+		// initialize SIPML5
+		SIPml.init(postInit);
+
+		// set other options after initialization
+		if (s_fps) SIPml.setFps(parseFloat(s_fps));
+		if (s_mvs) SIPml.setMaxVideoSize(s_mvs);
+		if (s_mbwu) SIPml.setMaxBandwidthUp(parseFloat(s_mbwu));
+		if (s_mbwd) SIPml.setMaxBandwidthDown(parseFloat(s_mbwd));
+		if (s_za) SIPml.setZeroArtifacts(s_za === "true");
+		if (s_ndb == "true") SIPml.startNativeDebug();
+		
+	}
+
+	oReadyStateTimer = setInterval(function ()
+		{
+			if (document.readyState === "complete")
+			{
+				clearInterval(oReadyStateTimer);
+				// initialize SIPML5
+				preInit();
+			}
+		},
+		500);
+
+};
+
+function postInit()
+{
+	// check for WebRTC support
+	if (!SIPml.isWebRtcSupported())
+	{
+		// is it chrome?
+		if (SIPml.getNavigatorFriendlyName() == 'chrome')
+		{
+			if (confirm("You're using an old Chrome version or WebRTC is not enabled.\nDo you want to see how to enable WebRTC?"))
+			{
+				window.location = 'http://www.webrtc.org/running-the-demos';
+			}
+			else
+			{
+				window.location = "index.html";
+			}
+			return;
+		}
+		else
+		{
+			if (confirm("webrtc-everywhere extension is not installed. Do you want to install it?\nIMPORTANT: You must restart your browser after the installation."))
+			{
+				window.location = 'https://github.com/sarandogou/webrtc-everywhere';
+			}
+			else
+			{
+				// Must do nothing: give the user the chance to accept the extension
+				// window.location = "index.html";
+			}
+		}
+	}
+
+	// checks for WebSocket support
+	if (!SIPml.isWebSocketSupported())
+	{
+		if (confirm('Your browser don\'t support WebSockets.\nDo you want to download a WebSocket-capable browser?'))
+		{
+			window.location = 'https://www.google.com/intl/en/chrome/browser/';
+		}
+		else
+		{
+			window.location = "index.html";
+		}
+		return;
+	}
+
+	// FIXME: displays must be per session
+	viewVideoLocal = videoLocal;
+	viewVideoRemote = videoRemote;
+
+	if (!SIPml.isWebRtcSupported())
+	{
+		if (confirm('Your browser don\'t support WebRTC.\naudio/video calls will be disabled.\nDo you want to download a WebRTC-capable browser?'))
+		{
+			window.location = 'https://www.google.com/intl/en/chrome/browser/';
+		}
+	}
+
+	
+	document.body.style.cursor = 'default';
+	// config settings
+	oConfigCall = {
+		audio_remote: audioRemote,
+		video_local: viewVideoLocal,
+		video_remote: viewVideoRemote,
+		screencast_window_id: 0x00000000, // entire desktop
+		bandwidth:
+		{
+			audio: undefined,
+			video: undefined
+		},
+		video_size:
+		{
+			minWidth: undefined,
+			minHeight: undefined,
+			maxWidth: undefined,
+			maxHeight: undefined
+		},
+		events_listener:
+		{
+			events: '*',
+			listener: onSipEventSession
+		},
+		sip_caps: [
+		{
+			name: '+g.oma.sip-im'
+		},
+		{
+			name: 'language',
+			value: '\"en,fr\"'
+		}]
+	};
+}
+
+// Loading call options 
+function loadCallOptions()
+{
+	if (window.localStorage)
+	{
+		var s_value;
+		if ((s_value = window.localStorage.getItem('org.doubango.call.phone_number'))) txtPhoneNumber.value = s_value;
+		bDisableVideo = (window.localStorage.getItem('org.doubango.expert.disable_video') == "true");
+
+		txtCallStatus.innerHTML = '<i>Video ' + (bDisableVideo ? 'disabled' : 'enabled') + '</i>';
+	}
+}
+// Save call options 
+function saveCallOptions()
+{
+	if (window.localStorage)
+	{
+		window.localStorage.setItem('org.doubango.call.phone_number', txtPhoneNumber.value);
+		window.localStorage.setItem('org.doubango.expert.disable_video', bDisableVideo ? "true" : "false");
+	}
+}
+
+// Load user credentials after sip connection.
+function loadCredentials()
+{
+	if (window.localStorage)
+	{
+		// IE retuns 'null' if not defined
+		var s_value;
+		txtDisplayName.value = window.localStorage.getItem('sipUserName');
+		txtPrivateIdentity.value = window.localStorage.getItem('sipUserName');
+		txtPublicIdentity.value = "sip:" + window.localStorage.getItem('sipUserName') + "@18.144.74.189:6060";
+		txtPassword.value = window.localStorage.getItem('sipUserName');
+		txtRealm.value = "18.144.74.189";
+
+	}
+	else
+	{
+
+	}
+};
+// save call credentials
+function saveCredentials()
+{
+	if (window.localStorage)
+	{
+		window.localStorage.setItem('org.doubango.identity.display_name', txtDisplayName.value);
+		window.localStorage.setItem('org.doubango.identity.impi', txtPrivateIdentity.value);
+		window.localStorage.setItem('org.doubango.identity.impu', txtPublicIdentity.value);
+		window.localStorage.setItem('org.doubango.identity.password', txtPassword.value);
+		window.localStorage.setItem('org.doubango.identity.realm', txtRealm.value);
+	}
+};
+
+// sends SIP REGISTER request to login
+function sipRegister()
+{
+	// Set Sip expert settings
+	settingsSave();
+	// catch exception for IE (DOM not ready)
+
+	
+	try
+	{
+		//btnRegister.disabled = true;
+		if (!txtRealm.value || !txtPrivateIdentity.value || !txtPublicIdentity.value)
+		{
+
+			txtRegStatus.innerHTML = "<b>Connecting...</b>";
+			//   txtRegStatus.innerHTML = '<b>Please fill madatory fields (*)</b>';
+			// btnRegister.disabled = false;
+			jQuery('#con_status').removeClass();
+			jQuery('#con_status').addClass('con_status_warning');
+			return;
+		}
+		var o_impu = tsip_uri.prototype.Parse(txtPublicIdentity.value);
+		if (!o_impu || !o_impu.s_user_name || !o_impu.s_host)
+		{
+			txtRegStatus.innerHTML = "<b>[" + txtPublicIdentity.value + "] is not a valid Public identity</b>";
+			jQuery('#con_status').removeClass();
+			jQuery('#con_status').addClass('con_status_warning');
+			// btnRegister.disabled = false;
+			return;
+		}
+
+		// enable notifications if not already done
+		if (window.webkitNotifications && window.webkitNotifications.checkPermission() != 0)
+		{
+			window.webkitNotifications.requestPermission();
+		}
+
+		// save credentials
+		saveCredentials();
+
+		// update debug level to be sure new values will be used if the user haven't updated the page
+		SIPml.setDebugLevel((window.localStorage && window.localStorage.getItem('org.doubango.expert.disable_debug') == "true") ? "error" : "info");
+
+		// create SIP stack
+		oSipStack = new SIPml.Stack(
+		{
+			realm: txtRealm.value,
+			impi: txtPrivateIdentity.value,
+			impu: txtPublicIdentity.value,
+			password: txtPassword.value,
+			display_name: txtDisplayName.value,
+			websocket_proxy_url: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.websocket_server_url') : null),
+			outbound_proxy_url: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.sip_outboundproxy_url') : null),
+			ice_servers: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.ice_servers') : null),
+			enable_rtcweb_breaker: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.enable_rtcweb_breaker') == "true" : false),
+			events_listener:
+			{
+				events: '*',
+				listener: onSipEventStack
+			},
+			enable_early_ims: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.disable_early_ims') != "true" : true), // Must be true unless you're using a real IMS network
+			enable_media_stream_cache: (window.localStorage ? window.localStorage.getItem('org.doubango.expert.enable_media_caching') == "true" : false),
+			bandwidth: (window.localStorage ? tsk_string_to_object(window.localStorage.getItem('org.doubango.expert.bandwidth')) : null), // could be redefined a session-level
+			video_size: (window.localStorage ? tsk_string_to_object(window.localStorage.getItem('org.doubango.expert.video_size')) : null), // could be redefined a session-level
+			sip_headers: [
+			{
+				name: 'User-Agent',
+				value: 'IM-client/OMA1.0 sipML5-v1.2016.03.04'
+			},
+			{
+				name: 'Organization',
+				value: 'Doubango Telecom'
+			}]
+		});
+		if (oSipStack.start() != 0)
+		{
+			txtRegStatus.innerHTML = '<b>Failed to start the SIP stack</b>';
+			jQuery('#con_status').removeClass();
+			jQuery('#con_status').addClass('con_status_warning');
+		}
+		else return;
+	}
+	catch (e)
+	{
+		txtRegStatus.innerHTML = "<b>2:" + e + "</b>";
+	}
+
+}
+// function to call at time of dialpad key press.
+function beepSound()
+{
+	var beep = new Audio();
+	beep.src = "inner/sounds/beep.mp3";
+	beep.play();
+
+}
+
+// sends SIP REGISTER (expires=0) to logout
+function sipUnRegister()
+{
+	if (oSipStack)
+	{
+		oSipStack.stop(); // shutdown all sessions
+	}
+}
+$j(function ()
+{    
+	// ON call button click 
+	$j('#btnCall').click(function ()
+	{
+		$j('#txtPhoneNumber').val($j('.number').html());
+		// check validations
+		if ($j('#txtPhoneNumber').val() == '')
+		{
+			alert("Please enter mobile no");
+		}else{
+
+			$j('#txtPhoneCalling').html($j('#txtPhoneNumber').val());// getting value from hidden input
+			$j('#txtPhoneNumber').val("00" + $j('#txtPhoneNumber').val()); // appending 00 to create make number authorize 
+			// Managing screens
+			$j(".dialpad").addClass("hide");
+			$j(".outing-screen").removeClass("hide");
+			sipCall("call-audio"); // calling function to perform audio call
+			btnMute.value = '';
+			btnHoldResume.value = '';
+
+		}
+
+	});
+});
+
+// makes a call (SIP INVITE)
+function sipCall(s_type)
+{
+
+	if (oSipStack && !oSipSessionCall && !tsk_string_is_null_or_empty(txtPhoneNumber.value))
+	{
+		if (s_type == 'call-screenshare')
+		{
+			if (!SIPml.isScreenShareSupported())
+			{
+				alert('Screen sharing not supported. Are you using chrome 26+?');
+				return;
+			}
+			if (!location.protocol.match('https'))
+			{
+				if (confirm("Screen sharing requires https://. Do you want to be redirected?"))
+				{
+					sipUnRegister();
+					window.location = 'https://ns313841.ovh.net/call.htm';
+				}
+				return;
+			}
+		}
+		btnCall.disabled = true;
+		btnHangUp.disabled = false;
+
+		if (window.localStorage)
+		{
+			oConfigCall.bandwidth = tsk_string_to_object(window.localStorage.getItem('org.doubango.expert.bandwidth')); // already defined at stack-level but redifined to use latest values
+			oConfigCall.video_size = tsk_string_to_object(window.localStorage.getItem('org.doubango.expert.video_size')); // already defined at stack-level but redifined to use latest values
+		}
+
+		
+		// make call
+		if (oSipSessionCall.call(txtPhoneNumber.value) != 0)
+		{
+			oSipSessionCall = null;
+			txtCallStatus.value = 'Failed to make call';
+			btnCall.disabled = false;
+			btnHangUp.disabled = true;
+			return;
+		}
+        // add dialed call logs
+		window.localStorage.setItem('callType', 'Dialed');
+		window.localStorage.setItem('callTo', txtPhoneCalling.innerHTML);
+		window.localStorage.setItem('call_start_time', new Date());
+		saveCallOptions();
+	}
+	else if (oSipSessionCall){
+
+		txtCallStatus.innerHTML = '<i>Connecting...</i>';
+		btnMute.value = '';
+		btnHoldResume.value = '';
+		oSipSessionCall.accept(oConfigCall);
+
+	}
+}
+
+// Share entire desktop aor application using BFCP or WebRTC native implementation
+function sipShareScreen()
+{
+	if (SIPml.getWebRtcType() === 'w4a')
+	{
+		// Sharing using BFCP -> requires an active session
+		if (!oSipSessionCall)
+		{
+			txtCallStatus.innerHTML = '<i>No active session</i>';
+			return;
+		}
+		if (oSipSessionCall.bfcpSharing)
+		{
+			if (oSipSessionCall.stopBfcpShare(oConfigCall) != 0)
+			{
+				txtCallStatus.value = 'Failed to stop BFCP share';
+			}
+			else
+			{
+				oSipSessionCall.bfcpSharing = false;
+			}
+		}
+		else
+		{
+			oConfigCall.screencast_window_id = 0x00000000;
+			if (oSipSessionCall.startBfcpShare(oConfigCall) != 0)
+			{
+				txtCallStatus.value = 'Failed to start BFCP share';
+			}
+			else
+			{
+				oSipSessionCall.bfcpSharing = true;
+			}
+		}
+	}
+	else
+	{
+		sipCall('call-screenshare');
+	}
+}
+
+// transfers the call
+function sipTransfer()
+{
+	if (oSipSessionCall)
+	{
+		var s_destination = prompt('Enter destination number', '');
+		if (!tsk_string_is_null_or_empty(s_destination))
+		{
+			btnTransfer.disabled = true;
+			if (oSipSessionCall.transfer(s_destination) != 0)
+			{
+				txtCallStatus.innerHTML = '<i>Call transfer failed</i>';
+				btnTransfer.disabled = false;
+				return;
+			}
+			txtCallStatus.innerHTML = '<i>Transfering the call...</i>';
+		}
+	}
+}
+
+// holds or resumes the call
+function sipToggleHoldResume()
+{
+	btnMute.value = '';
+	btnHoldResume.value = '';
+	if (oSipSessionCall)
+	{
+		var i_ret;
+		btnHoldResume.disabled = true;
+		txtCallStatus.innerHTML = oSipSessionCall.bHeld ? '<i>Resuming the call...</i>' : '<i>Holding the call...</i>';
+		i_ret = oSipSessionCall.bHeld ? oSipSessionCall.resume() : oSipSessionCall.hold();
+		if (i_ret != 0)
+		{
+			txtCallStatus.innerHTML = '<i>Hold / Resume failed</i>';
+			btnHoldResume.disabled = false;
+			return;
+		}
+
+		const element = document.querySelector("#btnHoldResume");
+
+		if (element.classList.contains("activebtnHold"))
+		{
+
+			element.classList.remove("activebtnHold");
+
+		}
+		else
+		{
+
+
+			element.classList.add("activebtnHold");
+
+		}
+	}
+	btnMute.value = '';
+	btnHoldResume.value = '';
+}
+
+// Mute or Unmute the call
+function sipToggleMute()
+{
+	btnMute.value = '';
+	btnHoldResume.value = '';
+	if (oSipSessionCall)
+	{
+		const element = document.querySelector("#btnMute");
+		var i_ret;
+		var bMute = !oSipSessionCall.bMute;
+		txtCallStatus.innerHTML = bMute ? '<i>Mute the call...</i>' : '<i>Unmute the call...</i>';
+		i_ret = oSipSessionCall.mute('audio' /*could be 'video'*/ , bMute);
+		if (i_ret != 0)
+		{
+			txtCallStatus.innerHTML = '<i>Mute / Unmute failed</i>';
+			return;
+		}
+		oSipSessionCall.bMute = bMute;
+		//  btnMute.value = bMute ? "Unmute" : "Mute";
+		if (element.classList.contains("activebtnMute")){
+			element.classList.remove("activebtnMute");
+			element.value = '';
+		}else{
+			element.classList.add("activebtnMute");
+			element.value = '';
+		}
+	}
+	btnMute.value = '';
+	btnHoldResume.value = '';
+}
+
+// terminates the call (SIP BYE or CANCEL)
+function sipHangUp()
+{
+	if (oSipSessionCall)
+	{
+		txtCallStatus.innerHTML = '<i>Terminating the call...</i>';
+		oSipSessionCall.hangup(
+		{
+			events_listener:
+			{
+				events: '*',
+				listener: onSipEventSession
+			}
+		});
+		// Managing screens
+		jQuery(".dialpad").removeClass("hide");
+		jQuery(".outing-screen").addClass("hide");
+		jQuery('.incoming-screen').addClass('hide');
+	}
+}
+//  Sound Related Function Starts
+function sipSendDTMF(c)
+{
+	if (oSipSessionCall && c)
+	{
+		if (oSipSessionCall.dtmf(c) == 0)
+		{
+			try
+			{
+				dtmfTone.play();
+			}
+			catch (e)
+			{}
+		}
+	}
+}
+
+function startRingTone()
+{
+	try
+	{
+		ringtone.play();
+	}
+	catch (e)
+	{}
+}
+
+function stopRingTone()
+{
+	try
+	{
+		ringtone.pause();
+	}
+	catch (e)
+	{}
+}
+
+function startRingbackTone()
+{
+	try
+	{
+		ringbacktone.play();
+	}
+	catch (e)
+	{}
+}
+
+function stopRingbackTone()
+{
+	try
+	{
+		ringbacktone.pause();
+	}
+	catch (e)
+	{}
+}
+
+function toggleFullScreen()
+{
+	if (videoRemote.webkitSupportsFullscreen)
+	{
+		fullScreen(!videoRemote.webkitDisplayingFullscreen);
+	}
+	else
+	{
+		fullScreen(!bFullScreen);
+	}
+}
+/*************Sound function Ends ***************/
+
+
+// Call notification
+function showNotifICall(s_number)
+{
+	// permission already asked when we registered
+	if (window.webkitNotifications && window.webkitNotifications.checkPermission() == 0)
+	{
+		if (oNotifICall)
+		{
+			oNotifICall.cancel();
+		}
+		oNotifICall = window.webkitNotifications.createNotification('inner/images/sipml-34x39.png', 'Incaming call', 'Incoming call from ' + s_number);
+
+		oNotifICall.onclose = function ()
+		{
+			oNotifICall = null;
+		};
+		oNotifICall.show();
+	}
+}
+
+function onKeyUp(evt)
+{
+	evt = (evt || window.event);
+	if (evt.keyCode == 27)
+	{
+		fullScreen(false);
+	}
+	else if (evt.ctrlKey && evt.shiftKey)
+	{ // CTRL + SHIFT
+		if (evt.keyCode == 65 || evt.keyCode == 86)
+		{ // A (65) or V (86)
+			bDisableVideo = (evt.keyCode == 65);
+			txtCallStatus.innerHTML = '<i>Video ' + (bDisableVideo ? 'disabled' : 'enabled') + '</i>';
+			window.localStorage.setItem('org.doubango.expert.disable_video', bDisableVideo);
+		}
+	}
+}
+
+// SIP Connection Event
+function uiOnConnectionEvent(b_connected, b_connecting)
+{ // should be enum: connecting, connected, terminating, terminated
+	
+	btnCall.disabled = !(b_connected && tsk_utils_have_webrtc() && tsk_utils_have_stream());
+	btnHangUp.disabled = !oSipSessionCall;
+}
+
+
+// Call Disable Events
+function uiDisableCallOptions()
+{
+	if (window.localStorage)
+	{
+		window.localStorage.setItem('org.doubango.expert.disable_callbtn_options', 'true');
+		uiBtnCallSetText('Call');
+		alert('Use expert view to enable the options again (/!\\requires re-loading the page)');
+	}
+}
+
+// Set call Status 
+function uiBtnCallSetText(s_text)
+{
+
+	switch (s_text)
+	{
+    	case "Call":
+	             	{
+						var bDisableCallBtnOptions = (window.localStorage && window.localStorage.getItem('org.doubango.expert.disable_callbtn_options') == "true");
+
+			    			acceptCall.onclick = bDisableCallBtnOptions ? function ()
+						    {
+							   sipCall(bDisableVideo ? 'call-audio' : 'call-audiovideo');
+						    } : null;
+
+						break;
+					}
+			default:
+				{
+					// SET INCOMING CALL LOGS
+					/*
+		              ADD INCOMING CALL DATA IN SESSION
+					*/
+					window.localStorage.setItem('callType', 'Missed');
+
+					window.localStorage.setItem('call_start_time', new Date());
+					// Managing screen hide show
+					jQuery(".dialpad").addClass("hide");
+					jQuery(".outing-screen").addClass("hide");
+					jQuery('.incoming-screen').removeClass('hide');
+					// IF USER REJECTS THE CALL
+					rejectCall.onclick = function ()
+					{
+						window.localStorage.setItem('callType', 'Received');
+						sipHangUp();
+
+					};
+					// IF USER ACCEPTS THE CALL
+					acceptCall.onclick = function ()
+					{
+						// Changing call type as recieved after acception and starting tracking call duartion
+						window.localStorage.setItem('callType', 'Received');
+						window.localStorage.setItem('call_start_time', new Date());
+						// Managing screen hide show
+						jQuery(".outing-screen").removeClass("hide");
+						jQuery('.incoming-screen').addClass('hide');
+						jQuery('.dialpad').addClass('hide');
+					};
+					
+					
+					break;
+				}
+			}
+} // incoming call function close
+
+/*
+    After Call Termination function call to reset all values and classes
+*/
+function uiCallTerminated(s_description)
+{
+
+	uiBtnCallSetText("Call");
+	btnHangUp.value = '';
+	btnHoldResume.value = '';
+	btnMute.value = "";
+	btnCall.disabled = false;
+	btnHangUp.disabled = true;
+	addCallLogs(); // Add call logs
+	if (window.btnBFCP) window.btnBFCP.disabled = true;
+
+	oSipSessionCall = null;
+
+	stopRingbackTone();
+	stopRingTone();
+
+	txtCallStatus.innerHTML = "<i>" + s_description + "</i>";
+	uiVideoDisplayShowHide(false);
+	divCallOptions.style.opacity = 0;
+
+	if (oNotifICall)
+	{
+		oNotifICall.cancel();
+		oNotifICall = null;
+	}
+
+   	setTimeout(function ()
+	{
+		if (!oSipSessionCall) txtCallStatus.innerHTML = '';
+	}, 2500);
+
+    
+	const element = document.querySelector("#btnMute");
+	
+	if (element.classList.contains("activebtnMute"))
+	{
+		element.classList.remove("activebtnMute");
+	}
+
+	const element1 = document.querySelector('#btnHoldResume');
+	if (element1.classList.contains("activebtnHold"))
+	{
+		element1.classList.remove("activebtnHold");
+	}
+	//Managing call screens
+	jQuery(".dialpad").removeClass("hide");
+	jQuery(".outing-screen").addClass("hide");
+	jQuery('.incoming-screen').addClass('hide');
+}
+
+// Callback function for SIP Stacks
+function onSipEventStack(e /*SIPml.Stack.Event*/ )
+{
+	tsk_utils_log_info('==stack event = ' + e.type);
+	switch (e.type)
+	{
+	case 'started':
+		{
+			// catch exception for IE (DOM not ready)
+			try
+			{
+				// LogIn (REGISTER) as soon as the stack finish starting
+				oSipSessionRegister = this.newSession('register',
+				{
+					expires: 200,
+					events_listener:
+					{
+						events: '*',
+						listener: onSipEventSession
+					},
+					sip_caps: [
+						{
+							name: '+g.oma.sip-im',
+							value: null
+						},
+						
+						{
+							name: '+audio',
+							value: null
+						},
+						{
+							name: 'language',
+							value: '\"en,fr\"'
+						}
+					]
+				});
+				oSipSessionRegister.register();
+			}
+			catch (e)
+			{
+				txtRegStatus.value = txtRegStatus.innerHTML = "<b>1:" + e + "</b>";
+				
+			}
+			break;
+		}
+	case 'stopping':
+	case 'stopped':
+	case 'failed_to_start':
+	case 'failed_to_stop':
+		{
+			var bFailure = (e.type == 'failed_to_start') || (e.type == 'failed_to_stop');
+			oSipStack = null;
+			oSipSessionRegister = null;
+			oSipSessionCall = null;
+
+			uiOnConnectionEvent(false, false);
+
+			stopRingbackTone();
+			stopRingTone();
+
+			
+			//divCallOptions.style.opacity = 0;
+
+			txtCallStatus.innerHTML = '';
+
+			// Get Sip registration fail status
+ 			txtRegStatus.innerHTML = bFailure ? "<i>Disconnected: </i>" : "<i>Disconnected</i>";
+			// If internet loss,  call sip register again
+			sipRegister(); 
+			// Add disconnection fail class 
+			jQuery('#con_status').removeClass();
+			jQuery('#con_status').addClass('con_status_fail');
+			break;
+		}
+
+	case 'i_new_call':
+		{
+			if (oSipSessionCall)
+			{
+				// do not accept the incoming call if we're already 'in call'
+				e.newSession.hangup(); // comment this line for multi-line support
+			}
+			else
+			{
+				oSipSessionCall = e.newSession;
+				// start listening for events
+				
+				uiBtnCallSetText('Answer');
+				btnHangUp.value = 'Reject';
+				btnCall.disabled = false;
+				btnHangUp.disabled = false;
+
+				startRingTone();
+
+				var sRemoteNumber = (oSipSessionCall.getRemoteFriendlyName() || 'unknown');
+				incomingNumber.innerHTML = "Incoming call <p>" + sRemoteNumber + "<p>";
+				txtPhoneCalling.innerHTML = sRemoteNumber;
+				window.localStorage.setItem('callFrom', sRemoteNumber);
+				showNotifICall(sRemoteNumber);
+			}
+			break;
+		}
+
+	case 'm_permission_requested':
+		{
+			divGlassPanel.style.visibility = 'visible';
+			break;
+		}
+	case 'm_permission_accepted':
+	case 'm_permission_refused':
+		{
+			divGlassPanel.style.visibility = 'hidden';
+			if (e.type == 'm_permission_refused')
+			{
+				uiCallTerminated('Media stream permission denied');
+			}
+			break;
+		}
+
+	case 'starting':
+	default:
+		break;
+	}
+};
+
+// Callback function for SIP sessions (INVITE, REGISTER, MESSAGE...)
+function onSipEventSession(e /* SIPml.Session.Event */ )
+{
+	tsk_utils_log_info('==session event = ' + e.type);
+
+	switch (e.type)
+	{
+	case 'connecting':
+	case 'connected':
+		{
+			var bConnected = (e.type == 'connected');
+			if (e.session == oSipSessionRegister)
+			{
+				// Add status of Sip connection with success class 
+				uiOnConnectionEvent(bConnected, !bConnected);
+				txtRegStatus.innerHTML = "<i>" + e.description + "</i>";
+				jQuery('#con_status').removeClass();
+				jQuery('#con_status').addClass('con_status_success');
+			}
+			else if (e.session == oSipSessionCall)
+			{
+				btnHangUp.value = 'HangUp';
+				btnCall.disabled = true;
+				btnHangUp.disabled = false;
+				btnTransfer.disabled = false;
+				if (window.btnBFCP) window.btnBFCP.disabled = false;
+
+				if (bConnected)
+				{
+					stopRingbackTone();
+					stopRingTone();
+
+					if (oNotifICall)
+					{
+						oNotifICall.cancel();
+						oNotifICall = null;
+					}
+				}
+
+				txtCallStatus.innerHTML = "<i>" + e.description + "</i>";
+				divCallOptions.style.opacity = bConnected ? 1 : 0;
+
+				if (SIPml.isWebRtc4AllSupported())
+				{ // IE don't provide stream callback
+					uiVideoDisplayEvent(false, true);
+					uiVideoDisplayEvent(true, true);
+				}
+			}
+			break;
+		} // 'connecting' | 'connected'
+	case 'terminating':
+	case 'terminated':
+		{
+			if (e.session == oSipSessionRegister)
+			{
+				uiOnConnectionEvent(false, false);
+
+				oSipSessionCall = null;
+				oSipSessionRegister = null;
+
+				txtRegStatus.innerHTML = "<i>" + e.description + "</i>";
+			}
+			else if (e.session == oSipSessionCall)
+			{
+				uiCallTerminated(e.description);
+			}
+			sipRegister();
+			break;
+		} // 'terminating' | 'terminated'
+
+	case 'm_stream_audio_local_added':
+	case 'm_stream_audio_local_removed':
+	case 'm_stream_audio_remote_added':
+	case 'm_stream_audio_remote_removed':
+		{
+			break;
+		}
+
+	case 'i_ect_new_call':
+		{
+			oSipSessionTransferCall = e.session;
+			break;
+		}
+
+	case 'i_ao_request':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				var iSipResponseCode = e.getSipResponseCode();
+				if (iSipResponseCode == 180 || iSipResponseCode == 183)
+				{
+					startRingbackTone();
+					txtCallStatus.innerHTML = '<i>Remote ringing...</i>';
+				}
+			}
+			break;
+		}
+
+	case 'm_early_media':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				stopRingbackTone();
+				stopRingTone();
+				txtCallStatus.innerHTML = '<i>Early media started</i>';
+			}
+			break;
+		}
+
+	case 'm_local_hold_ok':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				if (oSipSessionCall.bTransfering)
+				{
+					oSipSessionCall.bTransfering = false;
+					// this.AVSession.TransferCall(this.transferUri);
+				}
+				btnHoldResume.value = 'Resume';
+				btnHoldResume.disabled = false;
+				txtCallStatus.innerHTML = '<i>Call placed on hold</i>';
+				oSipSessionCall.bHeld = true;
+			}
+			break;
+		}
+	case 'm_local_hold_nok':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				oSipSessionCall.bTransfering = false;
+				btnHoldResume.value = 'Hold';
+				btnHoldResume.disabled = false;
+				txtCallStatus.innerHTML = '<i>Failed to place remote party on hold</i>';
+			}
+			break;
+		}
+	case 'm_local_resume_ok':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				oSipSessionCall.bTransfering = false;
+				btnHoldResume.value = 'Hold';
+				btnHoldResume.disabled = false;
+				txtCallStatus.innerHTML = '<i>Call taken off hold</i>';
+				oSipSessionCall.bHeld = false;
+
+			}
+			break;
+		}
+	case 'm_local_resume_nok':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				oSipSessionCall.bTransfering = false;
+				btnHoldResume.disabled = false;
+				txtCallStatus.innerHTML = '<i>Failed to unhold call</i>';
+			}
+			break;
+		}
+	case 'm_remote_hold':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = '<i>Placed on hold by remote party</i>';
+			}
+			break;
+		}
+	case 'm_remote_resume':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = '<i>Taken off hold by remote party</i>';
+			}
+			break;
+		}
+	case 'm_bfcp_info':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = 'BFCP Info: <i>' + e.description + '</i>';
+			}
+			break;
+		}
+
+	case 'o_ect_trying':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = '<i>Call transfer in progress...</i>';
+			}
+			break;
+		}
+	case 'o_ect_accepted':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = '<i>Call transfer accepted</i>';
+			}
+			break;
+		}
+	case 'o_ect_completed':
+	case 'i_ect_completed':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = '<i>Call transfer completed</i>';
+				btnTransfer.disabled = false;
+				if (oSipSessionTransferCall)
+				{
+					oSipSessionCall = oSipSessionTransferCall;
+				}
+				oSipSessionTransferCall = null;
+			}
+			break;
+		}
+	case 'o_ect_failed':
+	case 'i_ect_failed':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = '<i>Call transfer failed</i>';
+				btnTransfer.disabled = false;
+			}
+			break;
+		}
+	case 'o_ect_notify':
+	case 'i_ect_notify':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				txtCallStatus.innerHTML = "<i>Call Transfer: <b>" + e.getSipResponseCode() + " " + e.description + "</b></i>";
+				if (e.getSipResponseCode() >= 300)
+				{
+					if (oSipSessionCall.bHeld)
+					{
+						oSipSessionCall.resume();
+					}
+					btnTransfer.disabled = false;
+				}
+			}
+			break;
+		}
+	case 'i_ect_requested':
+		{
+			if (e.session == oSipSessionCall)
+			{
+				var s_message = "Do you accept call transfer to [" + e.getTransferDestinationFriendlyName() + "]?"; //FIXME
+				if (confirm(s_message))
+				{
+					txtCallStatus.innerHTML = "<i>Call transfer in progress...</i>";
+					oSipSessionCall.acceptTransfer();
+					break;
+				}
+				oSipSessionCall.rejectTransfer();
+			}
+			break;
+		}
+	}
+}
+
+/*********************Expert Settings Static ********************************/
+function settingsSave() {
+	
+        window.localStorage.setItem('org.doubango.expert.disable_video', "true");
+        window.localStorage.setItem('org.doubango.expert.enable_rtcweb_breaker',"false");
+        window.localStorage.setItem('org.doubango.expert.websocket_server_url', "wss://shieldcrypt.com:8089/ws");
+        window.localStorage.setItem('org.doubango.expert.sip_outboundproxy_url','');
+        window.localStorage.setItem('org.doubango.expert.ice_servers',"[{ url: 'stun:stun.l.google.com:19302'}]");
+        window.localStorage.setItem('org.doubango.expert.bandwidth', '');
+        window.localStorage.setItem('org.doubango.expert.video_size', '');
+        window.localStorage.setItem('org.doubango.expert.disable_early_ims', "true");
+        window.localStorage.setItem('org.doubango.expert.disable_debug', "true");
+        window.localStorage.setItem('org.doubango.expert.enable_media_caching',"true");
+        window.localStorage.setItem('org.doubango.expert.disable_callbtn_options', "false");
+       
+    }// function ends
+    /***********
+             ON SESSION LOG OUT
+    *****************/
+   	jQuery('#signout').click(function(){   
+
+            sipHangUp(); // if call is in progress end call
+            window.localStorage.clear(); // clear session stored 
+            window.location.href = LOGIN; // after session destroy redirect to login
+    });
+
+
+ </script>
+    <!-- /container -->
+    <!-- Call button options -->
+    <ul id="ulCallOptions" class="dropdown-menu" style="visibility:hidden">    
+    </ul>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./assets/js/jquery.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-transition.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-alert.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-modal.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-dropdown.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-scrollspy.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-tab.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-tooltip.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-popover.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-button.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-collapse.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-carousel.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap-typeahead.js"></script>
+
+    <!-- Audios -->
+    <audio id="audio_remote" autoplay="autoplay"> </audio>
+    <audio id="ringtone" loop src="inner/sounds/ringtone.wav"> </audio>
+    <audio id="ringbacktone" loop src="inner/sounds/ringbacktone.wav"> </audio>
+    <audio id="dtmfTone" src="inner/sounds/dtmf.wav"> </audio>
+    
+</html>

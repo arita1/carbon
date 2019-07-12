@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Carbon Phone | Home</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="custom.css">
+
+<body>
+<!-- main Wrapper -->
+<div id="wrapper">
+	<div class="main-form">
+		<div class="inner-form">
+			<div class="login-form">
+				<div class="form-title">please Enter the Verification code</div>
+				<form class="form-activity otp-activity">
+					<div class="form-group">
+						<input type="text" class="form-control" id="otp" placeholder="Enter OTP" name="otp" autocomplete="off" min="0" max="9" pattern="[0-9]{1}">
+					</div>
+					<div class="form-group">
+						<input type="hidden" class="form-control" id="mobileNo" placeholder="Enter Mobile" name="mobileNo">
+					</div>	<span id="emailtooltip"></span>
+					<button type="button" onclick="verifyOTP();">Submit</button>
+				</form>
+			</div>
+		</div>
+		<div id="showLoad" class="loading" style="width:100%;display:none;">
+			<center>
+				<img src="images/default.svg" width="40">
+			</center>
+		</div>
+		<div class="resend">	<a href="javascript:void(0)" onclick="forgotPassword();"><span><i class="fa fa-repeat" aria-hidden="true"></i></span> Resend OTP</a>
+		</div>
+	</div>
+</div>
+<!-- main Wrapper -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"  src="outer/js/constant.js"></script>
+<script type="text/javascript" src="outer/js/outer_custom.js"></script>
+</head>
+</body>
+</html>

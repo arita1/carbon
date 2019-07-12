@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Carbon Phone | Home</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="custom.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div id="wrapper">
+		<div class="main-form">
+			<div class="inner-form">
+				<div class="login-form">
+					<div class="logo text-center"><img src="outer/images/Carbon_phone_logo.png" alt="" width="80"></div>
+					<div class="form-title">welcome to carbon</div>
+					<form class="form-activity otp-activity">
+						 <p class="text-center">Enter the Registered Email</p>
+				    <div class="form-group">
+					  <input type="email" class="form-control" id="otp" placeholder="Enter Email" name="otp"  autocomplete="off"  min="0" max="9" pattern="[0-9]{1}">
+					</div>
+
+ 					<div class="form-group">
+					  <input type="hidden" class="form-control" id="mobileNo" placeholder="Enter Mobile" name="mobileNo" >
+					</div>
+
+					<span id="emailtooltip" ></span>
+				    <button type="button" onclick="verifyOTP();">Submit</button>
+				  </form>
+				</div>
+			</div>
+			<div id="showLoad" class="loading" style="width:100%;display:none;">
+			<center>
+			  <img src="outer/images/default.svg" width="40">
+			</center>
+		    </div>
+			<div class="resend" style="display: flex; justify-content: space-between; width: 350px; padding: 0 10px;">
+				
+				<a href="login.html" onclick="forgotPassword();"><span><i class="fa fa-home" aria-hidden="true"></i></span> Back to home page</a>
+			</div> 
+		</div>
+	</div>
+	
+	
+<script src="../carbon-web/assets/js/jquery-3.4.1.min.js"></script>
+
+</body>
+</html>
